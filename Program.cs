@@ -4,15 +4,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Pangram pangram=new Pangram();
+        UserInputHandler userInputHandler = new UserInputHandler();
+        PangramCheckerService pangramCheckerService = new PangramCheckerService();
 
-        // درخواست ورودی از کاربر
-        Console.WriteLine("Please enter a sentence to check if it's a pangram:");
-        string input = Console.ReadLine();
-
-     
-        bool isPangram = pangram.IsPangram(input);
-
+        string input = userInputHandler.GetUserInput();
+        bool isPangram = pangramCheckerService.CheckPangram(input, new PangramChecker());
 
         if (isPangram)
         {
@@ -22,8 +18,5 @@ internal class Program
         {
             Console.WriteLine("The sentence is not a pangram.");
         }
-
     }
-
-
 }
